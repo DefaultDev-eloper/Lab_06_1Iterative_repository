@@ -9,8 +9,7 @@ void Create(int* b, const int size, const int Low, const int High) {
 		b[i] = Low + rand() % (High - Low + 1);
 }
 
-void Print(int* b, const int size)
-{
+void Print(int* b, const int size){
 	for (int i = 0; i < size; i++)
 		cout << setw(4) << b[i];
 	cout << endl;
