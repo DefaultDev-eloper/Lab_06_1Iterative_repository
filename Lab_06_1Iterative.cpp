@@ -16,16 +16,26 @@ void Print(int* b, const int size)
 	cout << endl;
 }
 
-int Sum(int* b, const int size, int& count) {
-	int S = 0;
-	count = 0;
+int Count(const int* b, const int size) {
+	int count = 0;
 	for (int i = 0; i < size; i++)
-		if (b[i] % 2 == 0 && b[i] <= 0) {
-			S += b[i];
-			b[i] = 0;
+		if (b[i] % 2 == 0 && b[i] <= 0)
 			count++;
-		}
+	return count;
+}
+
+int Sum(const int* b, const int size) {
+	int S = 0;
+	for (int i = 0; i < size; i++)
+		if (b[i] % 2 == 0 && b[i] <= 0)
+			S += b[i];
 	return S;
+}
+
+void Zero(int* b, const int size) {
+	for (int i = 0; i < size; i++)
+		if (b[i] % 2 == 0 && b[i] <= 0)
+			b[i] = 0;
 }
 
 int main() {
@@ -42,9 +52,11 @@ int main() {
 	cout << "Original array: ";
 	Print(b, size);
 	cout << endl;
-	
-	int count = 0;
-	int sum = Sum(b, size, count);
+
+	int count = Count(b, size);
+	int sum = Sum(b, size);
+
+	Zero(b, size);   
 
 	cout << "Count of the elements: " << count << endl;
 	cout << "Sum of the elements: " << sum << endl;
